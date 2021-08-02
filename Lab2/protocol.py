@@ -6,7 +6,10 @@ SEPARATOR = b"\x00"
 # mensagem e separa ela em nome_do_arquivo,palavra
 def decode(msg):
   spl = msg.split(SEPARATOR)
-  return spl[0], spl[1]
+  if len(spl) == 2:
+    return spl[0], spl[1]
+  else:
+    return SEPARATOR, None
 
 # Função que codifica mensagem, recebe nome_do_arquivo
 # e palavra e retorna nome_do_arquivo + "\x00" + palavra
@@ -16,6 +19,8 @@ def encode(filename, word):
 # Função que acha número de ocorrências de word no arquivo filename
 # retorna -1 se não ter acesso ao arquivo ou o número de ocorrências.
 def search(filename, word):
+  if filename == SEPARATOR or word == None:
+    return "Mensagem incorreta"
   # Convertemos filename e word para string
   if type(filename) == bytes:
     filename = filename.decode('utf-8')
