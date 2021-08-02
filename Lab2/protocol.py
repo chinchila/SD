@@ -31,4 +31,4 @@ def search(filename, word):
     return str(data.count(word)).encode('utf-8')
   # Se falhar, é porque não temos acesso ao arquivo, então retorna -1
   except IOError:
-    return b"Arquivo não existe ou não temos permissão de leitura"
+    return b"Arquivo nao existe ou nao temos permissao de leitura"
