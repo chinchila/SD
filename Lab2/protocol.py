@@ -20,7 +20,7 @@ def encode(filename, word):
 # retorna -1 se não ter acesso ao arquivo ou o número de ocorrências.
 def search(filename, word):
   if filename == SEPARATOR or word == None:
-    return "Mensagem incorreta"
+    return b"Mensagem incorreta"
   # Convertemos filename e word para string
   if type(filename) == bytes:
     filename = filename.decode('utf-8')
