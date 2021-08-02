@@ -17,26 +17,24 @@ sock.bind((HOST, PORTA))
 # Limitamos as conexões (em espera) para 5
 sock.listen(5)
 
-# Esperamos uma conexão
-novoSock, endereco = sock.accept()
-print ('Conectado com:', endereco)
-
-# Depois da conexão setamos uma flag
-connected = True
-
 # Enquanto o ativo está conectado
-while connected:
-  # Espera uma mensagem da conexão com a quantidade máxima de 1024
-  data = novoSock.recv(1024)
-  if data:
-    # Decodificamos os dados
-    filename, word = decode(data)
-    # Imprimimos a mensagem recebida
-    print("Busca de ocorrências da palavra", word.decode("utf-8"), "no arquivo", filename.decode("utf-8"))
-    # Envia a mensagem recebida de volta a quem enviou
-    novoSock.send(search(filename, word))
-  else:
-    connected = False
+while True:
+  # Esperamos uma conexão
+  novoSock, endereco = sock.accept()
+  print ('Conectado com:', endereco)
+  connected = True
+  while connected:
+    # Espera uma mensagem da conexão com a quantidade máxima de 1024
+    data = novoSock.recv(1024)
+    if data:
+      # Decodificamos os dados
+      filename, word = decode(data)
+      # Imprimimos a mensagem recebida
+      print("Busca de ocorrências da palavra", word.decode("utf-8"), "no arquivo", filename.decode("utf-8"))
+      # Envia a mensagem recebida de volta a quem enviou
+      novoSock.send(search(filename, word))
+    else:
+      connected = False
 
 # Já que a conexão acabou, fechamos os dois sockets
 novoSock.close()
