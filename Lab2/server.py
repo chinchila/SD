@@ -29,8 +29,6 @@ while True:
     if data:
       # Decodificamos os dados
       filename, word = decode(data)
-      # Imprimimos a mensagem recebida
-      print("Busca de ocorrências da palavra", word.decode("utf-8"), "no arquivo", filename.decode("utf-8"))
       # Envia a mensagem recebida de volta a quem enviou
       novoSock.send(search(filename, word))
     else:
