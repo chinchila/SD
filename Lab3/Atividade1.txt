@@ -1,0 +1,1 @@
+1. Foi implementado uma possibilidade de digitar comandos na parte do servidor. Por enquanto o único comando implementado é o "exit" que fecha todas as conexões e o servidor.
