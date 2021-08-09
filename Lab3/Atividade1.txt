@@ -1,1 +1,5 @@
-1. Foi implementado uma possibilidade de digitar comandos na parte do servidor. Por enquanto o único comando implementado é o "exit" que fecha todas as conexões e o servidor.
+1. Foi implementado uma possibilidade de digitar comandos na parte do servidor.
+Por enquanto o único comando implementado é o "exit" que fecha todas as conexões e o servidor.
+
+2. Vamos usar a implementação de threading padrão do python, então a cada conexão
+vai ser criada uma thread para tratar aquele cliente conectado.
